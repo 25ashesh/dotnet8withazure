@@ -1,0 +1,69 @@
+@host = http://localhost
+@port = 7088
+@FrontLineCleaners.API_HostAddress = https://localhost:7088
+
+GET {{FrontLineCleaners.API_HostAddress}}/api/weatherforecast/23/example?max=15
+Accept: application/json
+
+###
+
+POST {{FrontLineCleaners.API_HostAddress}}/api/weatherforecast
+Content-Type: application/json
+
+Ashesh
+
+###
+
+GET {{FrontLineCleaners.API_HostAddress}}/api/weatherforecast/example?results=5&min=2&max=40
+Accept: application/json
+
+###
+
+POST {{FrontLineCleaners.API_HostAddress}}/api/weatherforecast/generate?count=5
+Content-Type: application/json
+
+{
+  "min":-33,
+  "max":33
+
+}
+###
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners
+
+###
+
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/0
+
+###
+
+
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/200
+
+###
+POST {{FrontLineCleaners.API_HostAddress}}/api/cleaners
+Content-Type: application/json
+
+{
+  "Name":"SysCo Clean Services",
+  "Description":"Complete cleaning services",
+  "Category":"Complete",
+  "HasOwnSupplies":true,
+  "ContactEmail":"syscocs@info.co.uk",
+  "ContactNumber":"7234567340",
+  "City":"London",
+  "Street":"500 Bluebird St",
+  "PostalCode":"110-330"
+}
+
+###
+DELETE {{FrontLineCleaners.API_HostAddress}}/api/cleaners/12
+
+###
+PATCH {{FrontLineCleaners.API_HostAddress}}/api/cleaners/11
+Content-Type: application/json
+
+{
+  "Name":"Sys-Co Clean Services",
+  "Description":"Excelling in complete cleaning services",
+  "HasOwnSupplies":true
+}
