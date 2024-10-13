@@ -1,4 +1,5 @@
-﻿using FrontLineCleaners.Domain.Repositories;
+﻿using FrontLineCleaners.Domain.Entities;
+using FrontLineCleaners.Domain.Repositories;
 using FrontLineCleaners.Infrastructure.Persistence;
 using FrontLineCleaners.Infrastructure.Repositories;
 using FrontLineCleaners.Infrastructure.Seeders;
@@ -16,7 +17,10 @@ public static class ServiceCollectionsExtensions
         services.AddDbContext<FrontLineCleanersDbContext>(options => 
         options.UseSqlServer(connectionString)
         .EnableSensitiveDataLogging());
-    
+
+        services.AddIdentityApiEndpoints<User>()
+            .AddEntityFrameworkStores<FrontLineCleanersDbContext>();
+
         services.AddScoped<IFrontLineCleanersSeeder, FrontLineCleanersSeeder>();
         services.AddScoped<ICleanersRepository, CleanersRepository>();
         services.AddScoped<IServicesRepository, ServicesRepository>();

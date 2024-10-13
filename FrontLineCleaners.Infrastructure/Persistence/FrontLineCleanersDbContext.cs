@@ -1,8 +1,9 @@
 ﻿using FrontLineCleaners.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FrontLineCleaners.Infrastructure.Persistence;
-internal class FrontLineCleanersDbContext(DbContextOptions<FrontLineCleanersDbContext> options) : DbContext(options)
+internal class FrontLineCleanersDbContext(DbContextOptions<FrontLineCleanersDbContext> options) : IdentityDbContext<User>(options)
 {
     internal DbSet<Cleaner> Cleaners { get; set; }
     internal DbSet<Service> Services { get; set; }

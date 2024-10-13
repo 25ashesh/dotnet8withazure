@@ -69,19 +69,37 @@ Content-Type: application/json
 }
 
 ###
-POST {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1233/services
+POST {{FrontLineCleaners.API_HostAddress}}/api/cleaners/13/services
 Content-Type: application/json
 
 {
-  "Name":"Construction",
-  "Description":"Clean construction sites",
-  "Cost":1000,
-  "TimeInHours":6
+  "Name":"Office",
+  "Description":"Clean office spaces and buildings",
+  "Cost":1175,
+  "TimeInHours":10
 }
 ###
-GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1/services
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/13/services
 ###
 GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1/services/1
 
 ###
-DELETE {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1300/services
+DELETE {{FrontLineCleaners.API_HostAddress}}/api/cleaners/4/services
+
+###
+POST {{FrontLineCleaners.API_HostAddress}}/register
+Content-Type: application/json
+
+{
+  "email":"ae.ashesh@gmail.com",
+  "password":"Password1!"
+}
+
+###
+POST {{FrontLineCleaners.API_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email":"ae.ashesh@gmail.com",
+  "password":"Password1!"
+}
