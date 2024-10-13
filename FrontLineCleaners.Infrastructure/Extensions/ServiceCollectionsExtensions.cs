@@ -19,6 +19,6 @@ public static class ServiceCollectionsExtensions
     
         services.AddScoped<IFrontLineCleanersSeeder, FrontLineCleanersSeeder>();
         services.AddScoped<ICleanersRepository, CleanersRepository>();
-
+        services.AddScoped<IServicesRepository, ServicesRepository>();
     }
 }

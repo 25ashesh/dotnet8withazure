@@ -32,12 +32,12 @@ GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners
 
 ###
 
-GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/0
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1
 
 ###
 
 
-GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/200
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/13
 
 ###
 POST {{FrontLineCleaners.API_HostAddress}}/api/cleaners
@@ -67,3 +67,21 @@ Content-Type: application/json
   "Description":"Excelling in complete cleaning services",
   "HasOwnSupplies":true
 }
+
+###
+POST {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1233/services
+Content-Type: application/json
+
+{
+  "Name":"Construction",
+  "Description":"Clean construction sites",
+  "Cost":1000,
+  "TimeInHours":6
+}
+###
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1/services
+###
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1/services/1
+
+###
+DELETE {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1300/services
