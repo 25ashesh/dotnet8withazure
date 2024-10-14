@@ -3,6 +3,7 @@ using FrontLineCleaners.Domain.Repositories;
 using FrontLineCleaners.Infrastructure.Persistence;
 using FrontLineCleaners.Infrastructure.Repositories;
 using FrontLineCleaners.Infrastructure.Seeders;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +19,8 @@ public static class ServiceCollectionsExtensions
         options.UseSqlServer(connectionString)
         .EnableSensitiveDataLogging());
 
-        services.AddIdentityApiEndpoints<User>()
+        services.AddIdentityApiEndpoints<User>() //exposes endpoints for login/register etc.
+            .AddRoles<IdentityRole>() //Adds roles
             .AddEntityFrameworkStores<FrontLineCleanersDbContext>();
 
         services.AddScoped<IFrontLineCleanersSeeder, FrontLineCleanersSeeder>();

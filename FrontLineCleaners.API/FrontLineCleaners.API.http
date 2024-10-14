@@ -1,7 +1,7 @@
 @host = http://localhost
 @port = 7088
 @FrontLineCleaners.API_HostAddress = https://localhost:7088
-@token = CfDJ8P0E7vemrNBKtEfmnBM7Qgo_K4r-hXOFkd7J_z_yuxroG5PeTWjHx0Hph0FcSWerkRS9V7w15P01QqT40YE4MQtJmwZwhf9sLa56-vFTTa6HdEsjWyS5_IUO3wAcAWjgTRPTnrP9u7t3yhYsKgElCrE5W6uGxrqTFMjqmj8oCbNE4QgP-Dqp7ViVcyiZ9yyGbzAUTa9jovDSvhZndSC4_vfpsXJrC_F45zPnJce6-fDQzTqi-zhVFM2Q7SJeVsOR4l4ljavZplbsBqN1sznWd3iLLirf8isuTBoQFV2k7eGVIRn2sDxRujpge3kdLEbH5IETTV2XdZkw5eVp1MQenmQvbbp2tOoQcXvBShNTH3iNP3xjQcwh6gW48rpICJDKfiBjitwwMTnLrnFMGEQ1I5IJGJhoxj1MZ4_u0HCrwloLIWdDbVK-PLKyBvTGaFeafzlTuCi8vxkhsHJlP66zidbmYcuipWsa5Tvp5_bdp7Vmf4d28oatUfItbenEWKWjgX2OpdQ8cP54KFd0CT5EkP2iu1NsnvXshTvPoP960HxeNYY-BSb43L4LXHz6xmvC8X_xDqbRbkdRIAz2nqKOsNjXPlheLI1UWoFXc8a1elUQ16ZmC8f76gxIABBgymphAdnpBILhXq5o2ahuRE--xmJpZ9HmxtcCzcrUrPFC4QLBIhhQMtJFYQLgEqmTTvwwzIdNqJwHOmm8bg5aMmowNw8
+@token = CfDJ8P0E7vemrNBKtEfmnBM7Qgo62wUysmd2kdLbByxOfcV525R9GUCfPyz_WLpGls9644R0E60pThLfemJfniLavhtCXHTBb_Om865sGVpTIJDtQrQPT4zukfm503l0s8OoSGa3SzpAMhF9_bNfIXi39HA86CU-2SwDSjGTsQ0La_I6lvnlJ8ecLxNzvErv2F1A-V0b0zvLbixKqKZ_o0czQhdPwiEXpXn-Krkk2okzySyIrPcfj8hJJP7xU1yOu6fgry9n4wpNWUDmPMk9A-WSfIWtA_WbV3jKMdY_w2D_rgEDarO9sJf5AviUAK2le4fieoBuNxZkdexqb4msj_R1jJrJKdHInZlFtd5f7t-yyC3UodaB5rWdqY7hMs9vgKW7l4GGHj4iQE7xsn2-dmOif_08jrkKq7a0f4GjhDtRsBBaSr2BoHC9gvf3hKeCtrWFxOv2adDpOyWO6b-aO-YbXtIHvfkMj8zQIzJhq9Q9sj98CiPEwRQBjmG2xydJzyf7hEnKQsXa4ysxMwMB6EvuijwOz9o34O4KFRIi67wntxE0ZuDOadS8pogJqjKnzsj-3QT-XcG3CkFEH0Fi0r5aCoLDYK82Q5Sno44whWaSzoNxKJAwXvDjf9nZUOm3UTD0S_gROYFd82FGcqpun8377kGUnW4sbU6DnIuBGOd1vNLkZ1Qe53NqVp4TVZ7O0s5jNFoopXeR-YKxda4h2aSi07nzZvWbNi4x2sycEHtjSNTUjvA-5K3jnXofPo9ArY7ApTOZs9O5BvG6gHu7KIKRGYDYkxU3sEMtPBzIdtRyiwDF
 GET {{FrontLineCleaners.API_HostAddress}}/api/weatherforecast/23/example?max=15
 Accept: application/json
 
@@ -41,18 +41,19 @@ GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/13
 
 ###
 POST {{FrontLineCleaners.API_HostAddress}}/api/cleaners
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "Name":"SysCo Clean Services",
-  "Description":"Complete cleaning services",
+  "Name":"TopPro Cleaners",
+  "Description":"Professional cleaning services",
   "Category":"Complete",
   "HasOwnSupplies":true,
-  "ContactEmail":"syscocs@info.co.uk",
-  "ContactNumber":"7234567340",
+  "ContactEmail":"toppro@info.co.uk",
+  "ContactNumber":"7234567344",
   "City":"London",
-  "Street":"500 Bluebird St",
-  "PostalCode":"110-330"
+  "Street":"508 Villa St",
+  "PostalCode":"111-330"
 }
 
 ###
@@ -91,7 +92,7 @@ POST {{FrontLineCleaners.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
-  "email":"ae.ashesh@gmail.com",
+  "email":"admin@flc.com",
   "password":"Password1!"
 }
 
@@ -100,6 +101,16 @@ POST {{FrontLineCleaners.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-  "email":"ae.ashesh@gmail.com",
+  "email":"admin@flc.com",
   "password":"Password1!"
+}
+
+###
+POST {{FrontLineCleaners.API_HostAddress}}/api/identity/userRole
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "userEmail":"ae.ashesh@gmail.com",
+  "roleName":"User"
 }

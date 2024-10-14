@@ -1,6 +1,7 @@
 ﻿using FrontLineCleaners.Application.Commands;
 using FrontLineCleaners.Application.Dtos;
 using FrontLineCleaners.Application.Queries;
+using FrontLineCleaners.Domain.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,7 @@ public class CleanersController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = UserRoles.Owner)]
     public async Task<IActionResult> CreateCleaner([FromBody] CreateCleanerCommand command)
     {
         if (!ModelState.IsValid)
