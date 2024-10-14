@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
+using FrontLineCleaners.Application.User;
 using Microsoft.Extensions.DependencyInjection;
-
 namespace FrontLineCleaners.Application.Extensions;
 
 public static class ServiceCollectionsExtensions
@@ -17,6 +17,9 @@ public static class ServiceCollectionsExtensions
 
         services.AddValidatorsFromAssembly(applicationAssembly)
             .AddFluentValidationAutoValidation();
+
+        services.AddScoped<IUserContext, UserContext>();
+        services.AddHttpContextAccessor();
     }
 }
 

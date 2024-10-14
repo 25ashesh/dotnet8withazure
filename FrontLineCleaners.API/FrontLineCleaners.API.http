@@ -1,7 +1,7 @@
 @host = http://localhost
 @port = 7088
 @FrontLineCleaners.API_HostAddress = https://localhost:7088
-
+@token = CfDJ8P0E7vemrNBKtEfmnBM7Qgo_K4r-hXOFkd7J_z_yuxroG5PeTWjHx0Hph0FcSWerkRS9V7w15P01QqT40YE4MQtJmwZwhf9sLa56-vFTTa6HdEsjWyS5_IUO3wAcAWjgTRPTnrP9u7t3yhYsKgElCrE5W6uGxrqTFMjqmj8oCbNE4QgP-Dqp7ViVcyiZ9yyGbzAUTa9jovDSvhZndSC4_vfpsXJrC_F45zPnJce6-fDQzTqi-zhVFM2Q7SJeVsOR4l4ljavZplbsBqN1sznWd3iLLirf8isuTBoQFV2k7eGVIRn2sDxRujpge3kdLEbH5IETTV2XdZkw5eVp1MQenmQvbbp2tOoQcXvBShNTH3iNP3xjQcwh6gW48rpICJDKfiBjitwwMTnLrnFMGEQ1I5IJGJhoxj1MZ4_u0HCrwloLIWdDbVK-PLKyBvTGaFeafzlTuCi8vxkhsHJlP66zidbmYcuipWsa5Tvp5_bdp7Vmf4d28oatUfItbenEWKWjgX2OpdQ8cP54KFd0CT5EkP2iu1NsnvXshTvPoP960HxeNYY-BSb43L4LXHz6xmvC8X_xDqbRbkdRIAz2nqKOsNjXPlheLI1UWoFXc8a1elUQ16ZmC8f76gxIABBgymphAdnpBILhXq5o2ahuRE--xmJpZ9HmxtcCzcrUrPFC4QLBIhhQMtJFYQLgEqmTTvwwzIdNqJwHOmm8bg5aMmowNw8
 GET {{FrontLineCleaners.API_HostAddress}}/api/weatherforecast/23/example?max=15
 Accept: application/json
 
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 ###
 GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners
-
+Authorization: Bearer {{token}}
 ###
 
 GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1
@@ -87,7 +87,7 @@ GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1/services/1
 DELETE {{FrontLineCleaners.API_HostAddress}}/api/cleaners/4/services
 
 ###
-POST {{FrontLineCleaners.API_HostAddress}}/register
+POST {{FrontLineCleaners.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
@@ -96,7 +96,7 @@ Content-Type: application/json
 }
 
 ###
-POST {{FrontLineCleaners.API_HostAddress}}/login
+POST {{FrontLineCleaners.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
