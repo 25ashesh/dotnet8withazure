@@ -1,7 +1,7 @@
 @host = http://localhost
 @port = 7088
 @FrontLineCleaners.API_HostAddress = https://localhost:7088
-@token = CfDJ8P0E7vemrNBKtEfmnBM7Qgo62wUysmd2kdLbByxOfcV525R9GUCfPyz_WLpGls9644R0E60pThLfemJfniLavhtCXHTBb_Om865sGVpTIJDtQrQPT4zukfm503l0s8OoSGa3SzpAMhF9_bNfIXi39HA86CU-2SwDSjGTsQ0La_I6lvnlJ8ecLxNzvErv2F1A-V0b0zvLbixKqKZ_o0czQhdPwiEXpXn-Krkk2okzySyIrPcfj8hJJP7xU1yOu6fgry9n4wpNWUDmPMk9A-WSfIWtA_WbV3jKMdY_w2D_rgEDarO9sJf5AviUAK2le4fieoBuNxZkdexqb4msj_R1jJrJKdHInZlFtd5f7t-yyC3UodaB5rWdqY7hMs9vgKW7l4GGHj4iQE7xsn2-dmOif_08jrkKq7a0f4GjhDtRsBBaSr2BoHC9gvf3hKeCtrWFxOv2adDpOyWO6b-aO-YbXtIHvfkMj8zQIzJhq9Q9sj98CiPEwRQBjmG2xydJzyf7hEnKQsXa4ysxMwMB6EvuijwOz9o34O4KFRIi67wntxE0ZuDOadS8pogJqjKnzsj-3QT-XcG3CkFEH0Fi0r5aCoLDYK82Q5Sno44whWaSzoNxKJAwXvDjf9nZUOm3UTD0S_gROYFd82FGcqpun8377kGUnW4sbU6DnIuBGOd1vNLkZ1Qe53NqVp4TVZ7O0s5jNFoopXeR-YKxda4h2aSi07nzZvWbNi4x2sycEHtjSNTUjvA-5K3jnXofPo9ArY7ApTOZs9O5BvG6gHu7KIKRGYDYkxU3sEMtPBzIdtRyiwDF
+@token = CfDJ8P0E7vemrNBKtEfmnBM7QgqoFrQLWqmHqCW9sG6Tx8bpVZNi4btxfdXrsZ34HcbNBHmSfJpsObYg0VvWTYWKe_wlsKvetvWioG1_S-GD67SW3M-4AEw40EN-32Xk0uer8D5cvVPtiuvh-FYeLCaZeSmUXv2ZyYP00D7Bzn5SvZ1vgHytjJjulByMxQJQ3s8LynZSI6nPK_66nkbVlfRd4wvQSvqZ8oXaqWA2Mh5jGRJ-4tcjvxdqrkkNOyBkN0VEEV8cVjjC4T6ekuDE4jkBrEBPzYvzD-BGj6xueRe39TFkIBplIgYh0_e8f7jH-DZjYWqVVhDSwd4rj9mFi3wieTQ6pYD_ny5SjSmahsALZl5F8P7eKP6LLcV9-hpctHiiLDctFGjQW4zbzyjMoml-F7eLon02p9n0KqACh1raFyxpzq75jFUJnUJyUdUhqr3ngbrOHCZf9aYjEswplT-q3ChQDCTAwhch4q37XJrOajG6XXzLsovHAWfGvqqDXMWD7MB8-yQbkNDz-UxR-KaxokMJIWtbBGaBu-2puEcYwRxy0dypxrKxSbi-V1xHzDNO1En7-klgATw6n9I0Jtmj7xDCBqOB44YKBTyANCgObx39GQCHGQzPyoIRFxZ9dQ0mLpZUz-AipnKIQSR5xRNZNypM4FqNwwlhHTjwx3cVJA-pRS6PjJXJuUiZHBEf5qbx_VbKWgavxpIuUmJUzCTj1Vk2CbskK64yyLZ7CTvZ-vBjir0WmqNXZFerzYkMkUCEzgDdTif6f-SA5URiKu8njT9djsl6Mu2AYFyxYhWRyOX2
 GET {{FrontLineCleaners.API_HostAddress}}/api/weatherforecast/23/example?max=15
 Accept: application/json
 
@@ -38,7 +38,7 @@ GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1
 
 
 GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/13
-
+Authorization: Bearer {{token}}
 ###
 POST {{FrontLineCleaners.API_HostAddress}}/api/cleaners
 Authorization: Bearer {{token}}
@@ -81,6 +81,7 @@ Content-Type: application/json
 }
 ###
 GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/13/services
+Authorization: Bearer {{token}}
 ###
 GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners/1/services/1
 
@@ -95,18 +96,36 @@ Content-Type: application/json
   "email":"admin@flc.com",
   "password":"Password1!"
 }
+###
+PATCH {{FrontLineCleaners.API_HostAddress}}/api/identity/user
+Authorization: Bearer {{token}}
+Content-Type: application/json
 
+{
+  "Nationality":"Burmese",
+  "DateOfBirth":"1996-02-09"
+}
 ###
 POST {{FrontLineCleaners.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-  "email":"admin@flc.com",
+  "email":"ae.ashesh@gmail.com",
   "password":"Password1!"
 }
 
 ###
 POST {{FrontLineCleaners.API_HostAddress}}/api/identity/userRole
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "userEmail":"ae.ashesh@gmail.com",
+  "roleName":"User"
+}
+
+###
+DELETE {{FrontLineCleaners.API_HostAddress}}/api/identity/userRole
 Authorization: Bearer {{token}}
 Content-Type: application/json
 

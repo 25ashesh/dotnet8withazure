@@ -22,6 +22,7 @@ public class CleanersController(IMediator mediator) : ControllerBase
         return Ok(cleaners);
     }
     [HttpGet("{id}")]
+    [Authorize(Policy = Infrastructure.Constants.PolicyNames.HasNationality)]
     //[Route("{id}")]
     public async Task<ActionResult<CleanerDto>> GetById([FromRoute] int id)
     {

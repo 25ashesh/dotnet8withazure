@@ -2,12 +2,14 @@
 using FrontLineCleaners.Application.Dtos;
 using FrontLineCleaners.Application.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FrontLineCleaners.API.Controllers;
 
 [ApiController]
 [Route("api/cleaners/{cleanerId}/services")]
+[Authorize]
 public class ServicesController(IMediator mediator) : ControllerBase
 {
     [HttpPost]
@@ -19,6 +21,7 @@ public class ServicesController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Policy = Infrastructure.Constants.PolicyNames.AtLeast20)]
     public async Task<ActionResult<IEnumerable<ServiceDto>>> GetAllServicesForCleaner([FromRoute] int cleanerId) 
     {
         var services = await mediator.Send(new GetServicesForCleanerQuery(cleanerId));
