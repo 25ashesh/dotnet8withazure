@@ -25,5 +25,10 @@ internal class FrontLineCleanersDbContext(DbContextOptions<FrontLineCleanersDbCo
             .WithOne() //from Service perspective, each service has one Cleaner Company
             .HasForeignKey(d => d.CleanerId); //service has a foreign key to the Cleaner Company
 
+        //User to the CleanerCompany relationship
+        modelBuilder.Entity<User>()
+            .HasMany(o => o.OwnedCleaners) //user can own many Cleaner company
+            .WithOne(c => c.Owner) //cleaner company can have only one owner
+            .HasForeignKey(c => c.OwnerId); //foreign key is on the OwnerId property of the cleaner company
     }
 }

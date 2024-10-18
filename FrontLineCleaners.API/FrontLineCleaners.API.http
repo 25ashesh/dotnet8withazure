@@ -1,7 +1,7 @@
 @host = http://localhost
 @port = 7088
 @FrontLineCleaners.API_HostAddress = https://localhost:7088
-@token = CfDJ8P0E7vemrNBKtEfmnBM7QgqoFrQLWqmHqCW9sG6Tx8bpVZNi4btxfdXrsZ34HcbNBHmSfJpsObYg0VvWTYWKe_wlsKvetvWioG1_S-GD67SW3M-4AEw40EN-32Xk0uer8D5cvVPtiuvh-FYeLCaZeSmUXv2ZyYP00D7Bzn5SvZ1vgHytjJjulByMxQJQ3s8LynZSI6nPK_66nkbVlfRd4wvQSvqZ8oXaqWA2Mh5jGRJ-4tcjvxdqrkkNOyBkN0VEEV8cVjjC4T6ekuDE4jkBrEBPzYvzD-BGj6xueRe39TFkIBplIgYh0_e8f7jH-DZjYWqVVhDSwd4rj9mFi3wieTQ6pYD_ny5SjSmahsALZl5F8P7eKP6LLcV9-hpctHiiLDctFGjQW4zbzyjMoml-F7eLon02p9n0KqACh1raFyxpzq75jFUJnUJyUdUhqr3ngbrOHCZf9aYjEswplT-q3ChQDCTAwhch4q37XJrOajG6XXzLsovHAWfGvqqDXMWD7MB8-yQbkNDz-UxR-KaxokMJIWtbBGaBu-2puEcYwRxy0dypxrKxSbi-V1xHzDNO1En7-klgATw6n9I0Jtmj7xDCBqOB44YKBTyANCgObx39GQCHGQzPyoIRFxZ9dQ0mLpZUz-AipnKIQSR5xRNZNypM4FqNwwlhHTjwx3cVJA-pRS6PjJXJuUiZHBEf5qbx_VbKWgavxpIuUmJUzCTj1Vk2CbskK64yyLZ7CTvZ-vBjir0WmqNXZFerzYkMkUCEzgDdTif6f-SA5URiKu8njT9djsl6Mu2AYFyxYhWRyOX2
+@token = CfDJ8P0E7vemrNBKtEfmnBM7QgqPSVrdNlVWJROG7p15F-ShdEE2Qz9LKAWgnnroGqcYsE2vLrmfhTJ9a_tPMiEhZWkZwbu6lWIf4CupMlWH3urqeRv4nBaqBYTyEoDW-28Wko7dszaS0Eycn4nlFjZSs2CIKDHHmLP9Gsd_S0JVUbW_SGywInDH5QlZ3pCFlS24YiHJs2rVL2eUpmq7Y4HTH2jIrFVnOPTdZQOWBL1-Hpxy4PtIagRsvMO57az0cGXA4b1vOoi_g74KpfsMlkcTbBFxLEqWnMJcxVQl2aaQgsmHFXrU_f5tI5gGZlpp7e0aoRvf-yAIo1fcSb3zfV2UsnA_g0lzhe2djOxqJbc6_n2bijoA2pLbiz3wkToKT_dzLJaSPEVZ6cB8DB8rs70mx-ajCuAy7w8HvyCG99UqWcLtYfZV_nDxQfb-6wb9OKAvXZ2fBQFaf8mGcj5bDe4edFJLyTLwUI2PDpQ_47aunEnBuxe1NjKiINWB4aogP4TjsiigQjlJLEbUyctpAXZ3LKlOzMyzPIS8mx-uQuuIQVcaHNO5T4kuRx03EV_v1p9XNypfpeqk0gNUiZXxPZmVNCrfl5toCfatbuPhpOrpOarF5kaS3wxP3e_yjkaW19naHFSEUR5Muy0HH6yYkXp1aP7eVPaJNhpMYQtSLB1Y3uOjKnUndMoDiRas5SnpEMJoumfwu_14cQ1nh7kZCjk-fccNzf5BQEsfsc75bzhteLjNZXF_q6HRAgGwHhZSKIyaVI-Jr_BoOnB8ooLrEOvoRuMOWHlwCGJ0mDFV9620D8fX
 GET {{FrontLineCleaners.API_HostAddress}}/api/weatherforecast/23/example?max=15
 Accept: application/json
 
@@ -45,15 +45,15 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "Name":"TopPro Cleaners",
-  "Description":"Professional cleaning services",
+  "Name":"kangaroo cleaning company",
+  "Description":"Reputed cleaning services",
   "Category":"Complete",
   "HasOwnSupplies":true,
-  "ContactEmail":"toppro@info.co.uk",
-  "ContactNumber":"7234567344",
+  "ContactEmail":"kangaroo@info.co.uk",
+  "ContactNumber":"7204567355",
   "City":"London",
-  "Street":"508 Villa St",
-  "PostalCode":"111-330"
+  "Street":"555 Kane St",
+  "PostalCode":"111-331"
 }
 
 ###
@@ -93,7 +93,7 @@ POST {{FrontLineCleaners.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
 {
-  "email":"admin@flc.com",
+  "email":"owner2@flc.com",
   "password":"Password1!"
 }
 ###
@@ -110,7 +110,7 @@ POST {{FrontLineCleaners.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-  "email":"ae.ashesh@gmail.com",
+  "email":"owner2@flc.com",
   "password":"Password1!"
 }
 
@@ -120,8 +120,8 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "userEmail":"ae.ashesh@gmail.com",
-  "roleName":"User"
+  "userEmail":"owner2@flc.com",
+  "roleName":"Owner"
 }
 
 ###
@@ -130,6 +130,6 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "userEmail":"ae.ashesh@gmail.com",
-  "roleName":"User"
+  "userEmail":"owner2@flc.com",
+  "roleName":"Owner"
 }

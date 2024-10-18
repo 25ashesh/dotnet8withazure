@@ -2,6 +2,7 @@
 using FrontLineCleaners.Application.Dtos;
 using FrontLineCleaners.Application.Queries;
 using FrontLineCleaners.Domain.Constants;
+using FrontLineCleaners.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,8 +15,9 @@ namespace FrontLineCleaners.API.Controllers;
 public class CleanersController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    [AllowAnonymous]
+    //[AllowAnonymous]
     //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<CleanerDto>))]
+    [Authorize(Policy = Constants.PolicyNames.OwnedAtLeast2CleanerCompanies)]
     public async Task<ActionResult<IEnumerable<CleanerDto>>> GetAll()
     {
         var cleaners = await mediator.Send(new GetAllCleanersQuery());

@@ -1,7 +1,9 @@
 ﻿using FrontLineCleaners.Domain.Entities;
+using FrontLineCleaners.Domain.Interfaces;
 using FrontLineCleaners.Domain.Repositories;
 using FrontLineCleaners.Infrastructure.Authorization;
 using FrontLineCleaners.Infrastructure.Authorization.Requirements;
+using FrontLineCleaners.Infrastructure.Authorization.Services;
 using FrontLineCleaners.Infrastructure.Persistence;
 using FrontLineCleaners.Infrastructure.Repositories;
 using FrontLineCleaners.Infrastructure.Seeders;
@@ -34,8 +36,11 @@ public static class ServiceCollectionsExtensions
         //Defining value e.g. as Nepalese implies, the nationality should match
         services.AddAuthorizationBuilder()
             .AddPolicy(Constants.PolicyNames.HasNationality, builder => builder.RequireClaim(Constants.AppClaimTypes.Nationality, "Nepalese", "Indian", "Chinese"))
-            .AddPolicy(Constants.PolicyNames.AtLeast20, builder => builder.AddRequirements(new MinimumAgeRequirement(20)));
+            .AddPolicy(Constants.PolicyNames.AtLeast20, builder => builder.AddRequirements(new MinimumAgeRequirement(20)))
+            .AddPolicy(Constants.PolicyNames.OwnedAtLeast2CleanerCompanies, builder => builder.AddRequirements(new MultipleCleanerCompanyOwnedRequirement(2)));
 
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
+        services.AddScoped<IAuthorizationHandler, MultipleCleanerCompanyOwnedRequirementHandler>();
+        services.AddScoped<ICleanerAuthorizationService, CleanerAuthorizationService>();
     }
 }

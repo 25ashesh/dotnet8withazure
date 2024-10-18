@@ -12,6 +12,7 @@ public static class Constants
     {
         public const string HasNationality = "HasNationality";
         public const string AtLeast20 = "AtLeast20";
+        public const string OwnedAtLeast2CleanerCompanies = "OwnedAtLeast2CleanerCompanies";
     }
 
     public static class AppClaimTypes

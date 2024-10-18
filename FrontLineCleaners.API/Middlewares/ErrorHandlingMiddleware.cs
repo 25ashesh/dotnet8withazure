@@ -11,12 +11,17 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
 		{
 			await next.Invoke(context);
 		}
-		catch (NotFoundException notFound) 
+		catch (NotFoundException notFound)
 		{
 			context.Response.StatusCode = 404;
 			await context.Response.WriteAsync(notFound.Message);
 
 			logger.LogWarning(notFound.Message);
+		}
+		catch (ForbidException) 
+		{
+			context.Response.StatusCode = 403;
+			await context.Response.WriteAsync("Access Forbidden");
 		}
 		catch (Exception ex)
 		{

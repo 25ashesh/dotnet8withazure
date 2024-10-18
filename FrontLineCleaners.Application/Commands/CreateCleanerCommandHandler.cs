@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FrontLineCleaners.Application.User;
 using FrontLineCleaners.Domain.Entities;
 using FrontLineCleaners.Domain.Repositories;
 using MediatR;
@@ -13,12 +14,20 @@ namespace FrontLineCleaners.Application.Commands;
 
 public class CreateCleanerCommandHandler (ILogger<CreateCleanerCommandHandler> logger,
     IMapper mapper,
-    ICleanersRepository cleanersRepository) : IRequestHandler<CreateCleanerCommand, int>
+    ICleanersRepository cleanersRepository,
+    IUserContext userContext) : IRequestHandler<CreateCleanerCommand, int>
 {
     public async Task<int> Handle(CreateCleanerCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Creating a new cleaner {@Cleaner}",request);
+        var currentUser = userContext.GetCurrentUser();
+
+        logger.LogInformation("{UserEmail} [{UserId}] Creating a new cleaner {@Cleaner}",
+            currentUser.Email,
+            currentUser.Id,
+            request);
+
         var cleaner = mapper.Map<Cleaner>(request);
+        cleaner.OwnerId = currentUser.Id;
         int id = await cleanersRepository.Create(cleaner);
         return id;
     }
