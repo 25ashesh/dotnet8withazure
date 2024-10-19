@@ -28,7 +28,7 @@ Content-Type: application/json
 
 }
 ###
-GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners
+GET {{FrontLineCleaners.API_HostAddress}}/api/cleaners?SearchPhrase=cleaner&pageSize=5&pageNumber=2&sortBy=Name&sortDirection=Descending
 Authorization: Bearer {{token}}
 ###
 

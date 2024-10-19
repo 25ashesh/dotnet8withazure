@@ -15,12 +15,12 @@ namespace FrontLineCleaners.API.Controllers;
 public class CleanersController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    //[AllowAnonymous]
+    [AllowAnonymous]
     //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<CleanerDto>))]
     [Authorize(Policy = Constants.PolicyNames.OwnedAtLeast2CleanerCompanies)]
-    public async Task<ActionResult<IEnumerable<CleanerDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<CleanerDto>>> GetAll([FromQuery] GetAllCleanersQuery query)
     {
-        var cleaners = await mediator.Send(new GetAllCleanersQuery());
+        var cleaners = await mediator.Send(query);
         return Ok(cleaners);
     }
     [HttpGet("{id}")]
