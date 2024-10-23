@@ -17,7 +17,7 @@ public class CleanersController(IMediator mediator) : ControllerBase
     [HttpGet]
     [AllowAnonymous]
     //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<CleanerDto>))]
-    [Authorize(Policy = Constants.PolicyNames.OwnedAtLeast2CleanerCompanies)]
+    //[Authorize(Policy = Constants.PolicyNames.OwnedAtLeast2CleanerCompanies)]
     public async Task<ActionResult<IEnumerable<CleanerDto>>> GetAll([FromQuery] GetAllCleanersQuery query)
     {
         var cleaners = await mediator.Send(query);

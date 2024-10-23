@@ -44,3 +44,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//Define program as public for unit testing
+public partial class Program { }
