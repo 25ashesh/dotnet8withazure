@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FrontLineCleaners.Application\FrontLineCleaners.Application.csproj" />
+    <ProjectReference Include="..\..\src\FrontLineCleaners.Application\FrontLineCleaners.Application.csproj" />
   </ItemGroup>
 
 </Project>

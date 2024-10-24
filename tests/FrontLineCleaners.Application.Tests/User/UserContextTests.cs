@@ -67,7 +67,7 @@ namespace FrontLineCleaners.Application.Tests.User
             //assert
             action.Should()
                 .Throw<InvalidOperationException>()
-                .WithMessage("User context is not present");
+                .WithMessage("User context is not present!");
         }
     }
 }
