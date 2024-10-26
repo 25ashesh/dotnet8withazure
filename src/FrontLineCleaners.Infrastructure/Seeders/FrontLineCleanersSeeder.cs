@@ -2,13 +2,19 @@
 using FrontLineCleaners.Domain.Entities;
 using FrontLineCleaners.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace FrontLineCleaners.Infrastructure.Seeders;
 
-internal class FrontLineCleanersSeeder(FrontLineCleanersDbContext dbContext): IFrontLineCleanersSeeder
+internal class FrontLineCleanersSeeder(FrontLineCleanersDbContext dbContext) : IFrontLineCleanersSeeder
 {
     public async Task Seed()
     {
+        if (dbContext.Database.GetPendingMigrations().Any())
+        {
+            await dbContext.Database.MigrateAsync();
+        }
+
         if (await dbContext.Database.CanConnectAsync())
         {
             if (!dbContext.Cleaners.Any())
@@ -26,7 +32,7 @@ internal class FrontLineCleanersSeeder(FrontLineCleanersDbContext dbContext): IF
             }
         }
     }
-    private IEnumerable<IdentityRole> GetRoles() 
+    private IEnumerable<IdentityRole> GetRoles()
     {
         List<IdentityRole> roles =
             [
@@ -34,11 +40,11 @@ internal class FrontLineCleanersSeeder(FrontLineCleanersDbContext dbContext): IF
                 {
                     NormalizedName = UserRoles.User.ToUpper()
                 },
-                new(UserRoles.Owner) 
+                new(UserRoles.Owner)
                 {
                     NormalizedName = UserRoles.Owner.ToUpper()
                 },
-                new(UserRoles.Admin) 
+                new(UserRoles.Admin)
                 {
                     NormalizedName = UserRoles.Admin.ToUpper()
                 },
