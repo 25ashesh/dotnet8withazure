@@ -53,9 +53,14 @@ internal class FrontLineCleanersSeeder(FrontLineCleanersDbContext dbContext) : I
     }
     private IEnumerable<Cleaner> GetCleaners()
     {
+        User owner = new User()
+        {
+            Email = "seed-user@flc.com"
+        };
         List<Cleaner> cleaners = [
             new()
             {
+                Owner = owner,
                 Name = "K1 Cleaner",
                 Category = "Living",
                 Description = "We clean your home",
@@ -87,6 +92,7 @@ internal class FrontLineCleanersSeeder(FrontLineCleanersDbContext dbContext) : I
             },
             new()
             {
+                Owner = owner,
                 Name = "Doe Cleaner",
                 Category = "Complete",
                 Description = "We clean everything",
